@@ -1,0 +1,54 @@
+Imports System
+Imports System.Numerics
+
+Module Program
+
+Sub EmpresaTrasporte()
+
+    Dim nombres(4) As String
+    Dim HTrabajadas(4) As Double
+    Dim SalxHora(4) As Double
+    Dim SalxSemana(4) As Double
+    Dim EmpMasHoras As String = nombres(0)
+    Dim Hmax As Double = HTrabajadas(0)
+
+    For i = 0 To 4
+        Console.Clear()
+        Console.WriteLine("Introduzca el nombre de empleado " & i + 1 & ":")
+        nombres(i) = Console.ReadLine()
+
+        Console.WriteLine("Ingrese las horas trabajadas de " & nombres(i))
+        HTrabajadas(i) = Console.ReadLine()
+
+        Console.WriteLine("Ingrese el salario por hora de " & nombres(i))
+        SalxHora(i) = Console.ReadLine()
+
+        SalxSemana(i) = HTrabajadas(i) * SalxHora(i)
+        Console.WriteLine()
+        Console.Clear()
+    Next
+
+    For i = 1 To 4
+        If HTrabajadas(i) > Hmax Then
+            Hmax = HTrabajadas(i)
+            EmpMasHoras = nombres(i)
+        End If
+    Next
+
+    Console.WriteLine("--------------------------------------------")
+    Console.WriteLine("             Reporte de empleados: ")
+    For i = 0 To 4
+        Console.WriteLine("Empleado: " & nombres(i))
+        Console.WriteLine("Horas trabajadas por semana: " & SalxHora(i))
+        Console.WriteLine("Salario de la semana: $" & SalxSemana(i))
+        Console.WriteLine("--------------------------------------------")
+    Next
+
+    Console.WriteLine("El empleado que ha trabajado más horas es: " & EmpMasHoras)
+
+End Sub
+
+Sub Main(args As String())
+        EmpresaTrasporte()
+    End Sub
+End Module
